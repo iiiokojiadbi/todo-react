@@ -4,9 +4,9 @@ import Button from './Button';
 const StatusFilter = () => {
   return (
     <div className='btn-group' role='group'>
-      <Button text='All' type='primary' />
-      <Button text='Active' type='primary' />
-      <Button text='Done' type='primary' />
+      <Button text='All' type='outline-dark' isActive='active'/>
+      <Button text='Active' type='outline-dark' />
+      <Button text='Done' type='outline-dark' />
     </div>
   )
 }
