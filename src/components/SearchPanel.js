@@ -1,18 +1,19 @@
 import React from 'react';
-import SearchInput from './SearchInput'
+import SearchInput from './SearchInput';
 import Button from './Button';
+import './../blocks/search-panel/search-panel.css';
 
 const SearchPanel = () => {
   
   return (
-    <React.Fragment>
+    <div className='search-panel'>
       <SearchInput />
-      <div className="btn-group" role="group">
+      <div className='btn-group' role='group'>
         <Button text={ 'All' } />
         <Button text={ 'Active' } />
         <Button text={ 'Done' } />
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 
