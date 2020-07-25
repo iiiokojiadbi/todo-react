@@ -2,6 +2,7 @@ import React from 'react';
 import SearchPanel from './SearchPanel';
 import AppHeader from './AppHeader';
 import TodoList from './TodoList';
+import './../blocks/page/page.css';
 import './../blocks/app/app.css';
 
 const App = () => {
@@ -13,10 +14,12 @@ const App = () => {
   ]
   
   return (
-    <div className='app'>
-      <AppHeader />
-      <SearchPanel />
-      <TodoList todos={ todoData } />
+    <div className='page'>
+      <div className='app'>
+        <AppHeader />
+        <SearchPanel />
+        <TodoList todos={ todoData } />
+      </div>
     </div>
   )
 }
