@@ -5,7 +5,7 @@ const SearchInput = () => {
   const searchText = 'Type to search';
   
   return (
-    <input placeholder={ searchText } />
+    <input className='form-control' type='text' placeholder={ searchText } />
   )
 }
 
