@@ -3,9 +3,9 @@ import TodoListItem from "./TodoListItem";
 
 const TodoList = ({ todos }) => {
   
-  const elements = todos.map((item, index) => {
+  const elements = todos.map(({ id, ...item }) => {
     return (
-      <li key={ index }>
+      <li key={ id }>
         <TodoListItem
           { ...item } />
       </li>
@@ -16,7 +16,7 @@ const TodoList = ({ todos }) => {
     <ul>
       { elements }
     </ul>
-  );
+  )
 }
 
 export default TodoList;
