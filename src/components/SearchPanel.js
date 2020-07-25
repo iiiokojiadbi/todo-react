@@ -10,7 +10,7 @@ const SearchPanel = () => {
       <SearchInput />
       <StatusFilter />
     </div>
-  )
-}
+  );
+};
 
 export default SearchPanel;
