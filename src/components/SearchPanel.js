@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
+import SearchInput from './SearchInput'
 
 const SearchPanel = () => {
   
-  const searchText = 'Type here to search';
-  return <input placeholder={ searchText } />
+  return (
+    <SearchInput />
+  )
 }
 
 export default SearchPanel;
