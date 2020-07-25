@@ -1,0 +1,9 @@
+@import url('./__title/app-header__title.css');
+@import url('./__info/app-header__info.css');
+
+.app-header {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    grid-column-gap: 15px;
+    align-items: flex-end;
+}
