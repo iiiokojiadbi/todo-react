@@ -1,12 +1,12 @@
 import React from 'react';
-import SearchInput from './SearchInput';
+import Input from './Input';
 import StatusFilter from './StatusFilter';
-import './../blocks/search-panel/search-panel.css';
+import './../blocks/panel/panel.css';
 
 const SearchPanel = () => {
   return (
-    <div className="search-panel">
-      <SearchInput />
+    <div className="panel">
+      <Input searchText="Type to search" />
       <StatusFilter />
     </div>
   );

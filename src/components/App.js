@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchPanel from './SearchPanel';
+import AddPanel from './AddPanel';
 import AppHeader from './AppHeader';
 import TodoList from './TodoList';
 import './../blocks/page/page.css';
@@ -33,6 +34,7 @@ class App extends Component {
           <AppHeader />
           <SearchPanel />
           <TodoList todos={todoData} onDeleted={this.handleDeleteItem} />
+          <AddPanel />
         </div>
       </div>
     );
