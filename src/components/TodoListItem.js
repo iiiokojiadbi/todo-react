@@ -21,7 +21,7 @@ export default class TodoListItem extends Component {
   };
 
   render() {
-    const { label } = this.props;
+    const { label, onDeleted } = this.props;
     const { done, important } = this.state;
     const classes = classnames({
       list__label: true,
@@ -34,11 +34,11 @@ export default class TodoListItem extends Component {
         <span className={classes} onClick={this.handleLabelClick}>
           {label}
         </span>
-        <Button type="outline-danger" icon="trash" />
+        <Button type="outline-danger" icon="trash" onDeleted={onDeleted} />
         <Button
           type="outline-success"
           icon="exclamation"
-          onBtnClick={this.handleImportantClick}
+          onDeleted={this.handleImportantClick}
         />
       </React.Fragment>
     );

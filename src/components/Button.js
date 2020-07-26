@@ -6,13 +6,13 @@ const Button = ({
   icon = '',
   text = null,
   isActive = '',
-  onBtnClick,
+  onDeleted = null,
 }) => {
   return (
     <button
       type="button"
       className={`btn btn-${type} button ${isActive}`}
-      onClick={onBtnClick}
+      onClick={onDeleted}
     >
       {text ? text : <i className={`fa fa-${icon}`} aria-hidden="true" />}
     </button>
