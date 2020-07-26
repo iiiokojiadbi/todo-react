@@ -3,26 +3,16 @@ import classnames from 'classnames';
 import Button from './Button';
 
 export default class TodoListItem extends Component {
-  state = {
-    done: false,
-    important: false,
-  };
-
-  handleLabelClick = () => {
-    this.setState({
-      done: !this.state.done,
-    });
-  };
-
-  handleImportantClick = () => {
-    this.setState({
-      important: !this.state.important,
-    });
-  };
-
   render() {
-    const { label, onDeleted } = this.props;
-    const { done, important } = this.state;
+    const {
+      label,
+      onDeleted,
+      onToggleImportant,
+      onToggleDone,
+      important,
+      done,
+    } = this.props;
+
     const classes = classnames({
       list__label: true,
       list__label_done: done,
@@ -31,14 +21,14 @@ export default class TodoListItem extends Component {
 
     return (
       <React.Fragment>
-        <span className={classes} onClick={this.handleLabelClick}>
+        <span className={classes} onClick={onToggleDone}>
           {label}
         </span>
         <Button type="outline-danger" icon="trash" handleClick={onDeleted} />
         <Button
           type="outline-success"
           icon="exclamation"
-          handleClick={this.handleImportantClick}
+          handleClick={onToggleImportant}
         />
       </React.Fragment>
     );
