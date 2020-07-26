@@ -3,7 +3,7 @@ import Input from './Input';
 import Button from './Button';
 import './../blocks/panel/panel.css';
 
-class AddPanel extends Component {
+export default class AddPanel extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
   };
@@ -23,5 +23,3 @@ class AddPanel extends Component {
     );
   }
 }
-
-export default AddPanel;

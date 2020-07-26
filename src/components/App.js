@@ -6,7 +6,7 @@ import TodoList from './TodoList';
 import './../blocks/page/page.css';
 import './../blocks/app/app.css';
 
-class App extends Component {
+export default class App extends Component {
   maxId = 1000;
 
   state = {
@@ -108,5 +108,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
