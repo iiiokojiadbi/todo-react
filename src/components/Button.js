@@ -2,6 +2,7 @@ import React from 'react';
 import './../blocks/button/button.css';
 
 const Button = ({
+  submit = false,
   type = 'outline-success',
   icon = '',
   text = null,
@@ -10,7 +11,7 @@ const Button = ({
 }) => {
   return (
     <button
-      type="button"
+      type={submit ? 'submit' : 'button'}
       className={`btn btn-${type} button ${isActive}`}
       onClick={handleClick}
     >
