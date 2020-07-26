@@ -27,6 +27,14 @@ class App extends Component {
     };
   }
 
+  toggleProperty(arr, id, propName) {
+    const [oldTodo] = arr.filter((todo) => todo.id === id);
+    const newTodo = { ...oldTodo, [propName]: !oldTodo[propName] };
+    const newTodoList = arr.map((todo) => (todo.id === id ? newTodo : todo));
+
+    return newTodoList;
+  }
+
   handleDeleteItem = (id) => {
     this.setState(({ todoData }) => {
       const newTodoData = todoData.filter((elem) => elem.id !== id);
@@ -60,39 +68,29 @@ class App extends Component {
 
   handleToggleImportant = (id) => {
     this.setState(({ todoData }) => {
-      const [oldTodo] = todoData.filter((todo) => todo.id === id);
-      const newTodo = { ...oldTodo, important: !oldTodo.important };
-      const newTodoList = todoData.map((todo) =>
-        todo.id === id ? newTodo : todo
-      );
-
       return {
-        todoData: newTodoList,
+        todoData: this.toggleProperty(todoData, id, 'important'),
       };
     });
   };
 
   handleToggleDone = (id) => {
     this.setState(({ todoData }) => {
-      const [oldTodo] = todoData.filter((todo) => todo.id === id);
-      const newTodo = { ...oldTodo, done: !oldTodo.done };
-      const newTodoList = todoData.map((todo) =>
-        todo.id === id ? newTodo : todo
-      );
-
       return {
-        todoData: newTodoList,
+        todoData: this.toggleProperty(todoData, id, 'done'),
       };
     });
   };
 
   render() {
     const { todoData, newTodo } = this.state;
+    const doneCount = todoData.filter((todo) => todo.done === true).length;
+    const todoCount = todoData.length - doneCount;
 
     return (
       <div className="page">
         <div className="app">
-          <AppHeader />
+          <AppHeader toDo={todoCount} done={doneCount} />
           <SearchPanel />
           <TodoList
             todos={todoData}
