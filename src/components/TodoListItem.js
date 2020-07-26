@@ -34,11 +34,11 @@ export default class TodoListItem extends Component {
         <span className={classes} onClick={this.handleLabelClick}>
           {label}
         </span>
-        <Button type="outline-danger" icon="trash" onDeleted={onDeleted} />
+        <Button type="outline-danger" icon="trash" handleClick={onDeleted} />
         <Button
           type="outline-success"
           icon="exclamation"
-          onDeleted={this.handleImportantClick}
+          handleClick={this.handleImportantClick}
         />
       </React.Fragment>
     );

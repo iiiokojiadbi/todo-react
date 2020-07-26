@@ -7,12 +7,15 @@ import './../blocks/page/page.css';
 import './../blocks/app/app.css';
 
 class App extends Component {
+  maxId = 1000;
+
   state = {
     todoData: [
       { label: 'Drink Coffee', important: false, id: 1 },
       { label: 'Make Awesome App', important: true, id: 2 },
       { label: 'Have a lunch', important: false, id: 3 },
     ],
+    newTodo: '',
   };
 
   handleDeleteItem = (id) => {
@@ -25,8 +28,34 @@ class App extends Component {
     });
   };
 
+  handleChangeInput = (value) => {
+    this.setState({
+      newTodo: value,
+    });
+  };
+
+  handleAddItem = () => {
+    const { newTodo } = this.state;
+    if (newTodo === '') {
+      console.log('Пустое поле!');
+      return;
+    }
+    this.setState(({ todoData }) => {
+      const todo = {
+        label: newTodo,
+        important: false,
+        id: this.maxId++,
+      };
+
+      return {
+        todoData: [...todoData, todo],
+        newTodo: '',
+      };
+    });
+  };
+
   render() {
-    const { todoData } = this.state;
+    const { todoData, newTodo } = this.state;
 
     return (
       <div className="page">
@@ -34,7 +63,11 @@ class App extends Component {
           <AppHeader />
           <SearchPanel />
           <TodoList todos={todoData} onDeleted={this.handleDeleteItem} />
-          <AddPanel />
+          <AddPanel
+            inputText={newTodo}
+            changeInput={this.handleChangeInput}
+            onAdd={this.handleAddItem}
+          />
         </div>
       </div>
     );
