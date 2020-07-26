@@ -1,6 +1,7 @@
 @import url('./__item/list__item.css');
 @import url('./__label/list__label.css');
 @import url('./__label/_done/list__label_done.css');
+@import url('./__label/_important/list__label_important.css');
 
 .list {
 }
