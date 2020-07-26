@@ -2,8 +2,8 @@
 @import url('./__info/app-header__info.css');
 
 .app-header {
-    display: grid;
-    grid-template-columns: 1fr 0.7fr;
-    grid-column-gap: 15px;
-    align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  grid-column-gap: 15px;
+  align-items: flex-end;
 }
