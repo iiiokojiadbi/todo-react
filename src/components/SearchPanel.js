@@ -5,7 +5,7 @@ import './../blocks/panel/panel.css';
 
 export default class SearchPanel extends Component {
   render() {
-    const { inputText, changeInput } = this.props;
+    const { inputText, changeInput, statusFilter, onFilterChange } = this.props;
 
     return (
       <div className="panel">
@@ -14,7 +14,10 @@ export default class SearchPanel extends Component {
           inputText={inputText}
           changeInput={changeInput}
         />
-        <StatusFilter />
+        <StatusFilter
+          statusFilter={statusFilter}
+          onFilterChange={onFilterChange}
+        />
       </div>
     );
   }

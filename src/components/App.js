@@ -17,6 +17,7 @@ export default class App extends Component {
     ],
     newTodo: '',
     searchTodo: '',
+    filterTodo: 'All',
   };
 
   createTodoItem(label) {
@@ -98,11 +99,33 @@ export default class App extends Component {
     );
   }
 
+  filterTodo(items, filter) {
+    switch (filter) {
+      case 'All':
+        return items;
+      case 'Active':
+        return items.filter((item) => !item.done);
+      case 'Done':
+        return items.filter((item) => item.done);
+      default:
+        return items;
+    }
+  }
+
+  handleFilterChange = (status) => {
+    this.setState({
+      filterTodo: status,
+    });
+  };
+
   render() {
-    const { todoData, newTodo, searchTodo } = this.state;
+    const { todoData, newTodo, searchTodo, filterTodo } = this.state;
     const doneCount = todoData.filter((todo) => todo.done === true).length;
     const todoCount = todoData.length - doneCount;
-    const visibleTodo = this.searchTodo(todoData, searchTodo);
+    const visibleTodo = this.filterTodo(
+      this.searchTodo(todoData, searchTodo),
+      filterTodo
+    );
 
     return (
       <div className="page">
@@ -111,6 +134,8 @@ export default class App extends Component {
           <SearchPanel
             inputText={searchTodo}
             changeInput={this.handleSearchInput}
+            statusFilter={filterTodo}
+            onFilterChange={this.handleFilterChange}
           />
           <TodoList
             todos={visibleTodo}

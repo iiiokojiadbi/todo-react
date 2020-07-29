@@ -6,13 +6,13 @@ const Button = ({
   type = 'outline-success',
   icon = '',
   text = null,
-  isActive = '',
+  isActive = false,
   handleClick,
 }) => {
   return (
     <button
       type={submit ? 'submit' : 'button'}
-      className={`btn btn-${type} button ${isActive}`}
+      className={`btn btn-${type} button ${isActive && 'active'}`}
       onClick={handleClick}
     >
       {text ? text : <i className={`fa fa-${icon}`} aria-hidden="true" />}
