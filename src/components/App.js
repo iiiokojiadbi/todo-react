@@ -16,6 +16,7 @@ export default class App extends Component {
       this.createTodoItem('Have a lunch'),
     ],
     newTodo: '',
+    searchTodo: '',
   };
 
   createTodoItem(label) {
@@ -54,7 +55,6 @@ export default class App extends Component {
   handleAddItem = () => {
     const { newTodo } = this.state;
     if (newTodo === '') {
-      console.log('Пустое поле!');
       return;
     }
     const todo = this.createTodoItem(newTodo);
@@ -82,18 +82,36 @@ export default class App extends Component {
     });
   };
 
+  handleSearchInput = (value) => {
+    this.setState({
+      searchTodo: value,
+    });
+  };
+
+  searchTodo(items, search) {
+    if (search.length === 0) {
+      return items;
+    }
+
+    return items.filter((item) => item.label.indexOf(search) > -1);
+  }
+
   render() {
-    const { todoData, newTodo } = this.state;
+    const { todoData, newTodo, searchTodo } = this.state;
     const doneCount = todoData.filter((todo) => todo.done === true).length;
     const todoCount = todoData.length - doneCount;
+    const visibleTodo = this.searchTodo(todoData, searchTodo);
 
     return (
       <div className="page">
         <div className="app">
           <AppHeader toDo={todoCount} done={doneCount} />
-          <SearchPanel />
+          <SearchPanel
+            inputText={searchTodo}
+            changeInput={this.handleSearchInput}
+          />
           <TodoList
-            todos={todoData}
+            todos={visibleTodo}
             onDeleted={this.handleDeleteItem}
             onToggleImportant={this.handleToggleImportant}
             onToggleDone={this.handleToggleDone}

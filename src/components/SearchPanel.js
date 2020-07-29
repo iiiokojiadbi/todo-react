@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Input from './Input';
 import StatusFilter from './StatusFilter';
 import './../blocks/panel/panel.css';
 
-const SearchPanel = () => {
-  return (
-    <div className="panel">
-      <Input searchText="Type to search" />
-      <StatusFilter />
-    </div>
-  );
-};
+export default class SearchPanel extends Component {
+  render() {
+    const { inputText, changeInput } = this.props;
 
-export default SearchPanel;
+    return (
+      <div className="panel">
+        <Input
+          searchText="Type to search"
+          inputText={inputText}
+          changeInput={changeInput}
+        />
+        <StatusFilter />
+      </div>
+    );
+  }
+}
